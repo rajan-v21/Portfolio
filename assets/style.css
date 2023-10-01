@@ -120,8 +120,8 @@ img{
 .section__subtitle{
     display: block;
     font-size: var(--h3-font-size);
-    color: var(--text-color);
     font-weight: var(--font-medium);
+    color: var(--text-color);
     margin-bottom: var(--mb-3);
 }
 
@@ -133,8 +133,8 @@ img{
 /*==================== LAYOUT =========================*/
 .container{
     max-width: 768px;
-    margin-left: var(--mb-1-5);
-    margin-right: var(--mb-1-5);
+    padding-left: var(--mb-1-5);
+    padding-right: var(--mb-1-5);
 }
 
 .grid{
@@ -198,7 +198,7 @@ img{
     border-radius: 50%;
     background-color: #cdb373;
     position: fixed;
-    animation: rotateCircle 30s linear infinite;
+    animation: rotateCircle 40s linear infinite;
 }
 
 @keyframes rotateCircle {
@@ -304,9 +304,10 @@ img{
 }
 
 .home__social{
-    display: none;
+    display: block;
     grid-template-columns: max-content;
     row-gap: 1rem;
+    justify-content: space-around;
 }
 
 .home__social-icon{
@@ -367,7 +368,7 @@ img{
     font-size: var(--small-font-size);
     color: var(--title-color);
     font-weight: var(--font-medium);
-    margin-right: var(--mb-0-25);
+    
 }
 
 .home__scroll-arrow{
@@ -394,9 +395,11 @@ img{
     transition: .3s;
 }
 
-.button--flex{
+.button__flex{
     display: inline-table;
     align-items: center;
+    font-size: var(--h3-font-size);
+    font-weight: var(--font-medium);
 }
 
 /*==================== ABOUT ======================*/
@@ -508,11 +511,11 @@ img{
 }
 
 .skills__cpp{
-    width: 80%;
+    width: 70%;
 }
 
 .skills__python{
-    width: 60%;
+    width: 50%;
 }
 
 .skills__java{
@@ -564,7 +567,7 @@ img{
 /*==================== QUALIFICATION ======================*/
 .qualification__tabs{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     margin-bottom: var(--mb-2);
 }
 
