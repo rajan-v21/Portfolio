@@ -6,9 +6,9 @@
 
 :root{
     --header-height: 4rem;
-    --orbit-diameter: 7rem;
-    --orbit-margin: 0.5rem;
-    --fab-margin: 2rem;
+    --orbit-diameter: 5rem;
+    --orbit-margin: 0rem;
+    --fab-margin: 1rem;
 
     /*============== Colors =================*/
     --first-color: #8557e0;
@@ -57,9 +57,9 @@
 @media screen and (min-width: 968px) {
     :root {
         --header-height: 5rem;
-        --orbit-diameter: 9rem;
-        --orbit-margin: 0.5rem;
-        --fab-margin: 2.5rem;
+        --orbit-diameter: 7rem;
+        --orbit-margin: 0rem;
+        --fab-margin: 1rem;
 
         --big-font-size: 3rem;
         --h1-font-size: 2.25rem;
@@ -74,6 +74,8 @@
 /*==================== BASE =========================*/
 *{
     box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
@@ -142,29 +144,48 @@ img{
     gap: 1.5rem;
 }
 
-.header{
+/*.header{
     width: 100%;
     position: fixed;
     bottom: 0;
     left: 0;
     z-index: var(--z-fixed);
     background-color: var(--body-color);
-}
+}*/
 
 .floating-button{
     width: var(--header-height);
     height: var(--header-height);
-    background-color: var(--first-color);
+    background-image: linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673);
+    box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+    background-size: 300% 100%;
     display: flex;
     border-radius: 50%;
     color: #fcfbfe;
     font-size: var(--big-font-size);
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
     align-items: center;
     justify-content: center;
     position: fixed;
     right: var(--fab-margin);
     bottom: var(--fab-margin);
+    cursor: pointer;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.floating-button:hover{
+    background-position: 100% 0;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+}
+
+.floating-button:focus {
+    outline: none;
 }
 
 .orbit{
@@ -176,7 +197,7 @@ img{
     inline-size: none;
     border: 1px solid transparent;
     border-radius: 50%;
-    animation: animate_01 10s linear infinite;
+    animation: animate_01 20s linear infinite;
     z-index: 1;
     pointer-events: none;
 }
@@ -196,9 +217,10 @@ img{
     right: var(--orbit-margin);
     bottom: var(--orbit-margin);
     border-radius: 50%;
-    background-color: #cdb373;
+    background-image: linear-gradient(to right, #5d6a78, #29323c);
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
     position: fixed;
-    animation: rotateCircle 40s linear infinite;
+    animation: rotateCircle 5s linear infinite;
 }
 
 @keyframes rotateCircle {
@@ -211,6 +233,112 @@ img{
 }
 
 /*==================== NAV ======================*/
+.menu {
+    position: fixed;
+    width: 650px;
+    height: 150px;
+    font-size: 20px;
+    
+}
+
+.hamburger {
+    width: 40px;
+    height: 4px;
+    background: #000000;
+    border-radius: 5px;
+    display: block;
+    position: absolute;
+    transition: transform 200ms;
+}
+  
+.hamburger-1 {
+    transform: translate3d(0, -8px, 0);
+}
+  
+.hamburger-2 {
+    transform: translate3d(0, 0, 0);
+}
+  
+.hamburger-3 {
+    transform: translate3d(0, 8px, 0);
+}
+
+.menu-item, .menu-open-button {
+    border-radius: 100%;
+    width: var(--header-height);
+    height: var(--header-height);
+    position: absolute;
+    transform: translate3d(0, 0, 0);
+    transition: transform ease-out 200ms;
+}
+  
+  .menu-open {
+    display: none;
+  }
+  
+  .menu-open:checked + .menu-open-button .hamburger-1 {
+    transform: translate3d(0, 0, 0) rotate(45deg);
+  }
+  .menu-open:checked + .menu-open-button .hamburger-2 {
+    transform: translate3d(0, 0, 0) scale(0.1, 1);
+  }
+  .menu-open:checked + .menu-open-button .hamburger-3 {
+    transform: translate3d(0, 0, 0) rotate(-45deg);
+  }
+  
+  
+  
+ 
+  .menu-item:nth-child(3) {
+    transition-duration: 180ms;
+  }
+  .menu-item:nth-child(4) {
+    transition-duration: 180ms;
+  }
+  .menu-item:nth-child(5) {
+    transition-duration: 180ms;
+  }
+  .menu-item:nth-child(6) {
+    transition-duration: 180ms;
+  }
+  
+  .menu-open-button {
+    z-index: 2;
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition-duration: 400ms;
+    transform: scale(1.1, 1.1) translate3d(0, 0, 0);
+    cursor: pointer;
+  }
+  
+  .menu-open-button:hover {
+    transform: scale(1.2, 1.2) translate3d(0, 0, 0);
+  }
+  
+  .menu-open:checked + .menu-open-button {
+    transition-timing-function: linear;
+    transition-duration: 200ms;
+    transform: scale(0.8, 0.8) translate3d(0, 0, 0);
+  }
+  
+  .menu-open:checked ~ .menu-item {
+    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  .menu-open:checked ~ .menu-item:nth-child(3) {
+    transition-duration: 190ms;
+    transform: translate3d(-110px, 0, 0);
+  }
+  .menu-open:checked ~ .menu-item:nth-child(4) {
+    transition-duration: 290ms;
+    transform: translate3d(-220px, 0, 0);
+  }
+  .menu-open:checked ~ .menu-item:nth-child(5) {
+    transition-duration: 390ms;
+    transform: translate3d(-330px, 0, 0);
+  }
+  .menu-open:checked ~ .menu-item:nth-child(6) {
+    transition-duration: 490ms;
+    transform: translate3d(-440px, 0, 0);
+  }
 /*
 .nav{
     max-width: 968px;
